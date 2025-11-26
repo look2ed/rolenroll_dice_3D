@@ -6,26 +6,13 @@ body {
   line-height: 1.4;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
+h1 { text-align: center; margin-bottom: 1.5rem; }
+h2 { margin-top: 1.5rem; }
 
-h2 {
-  margin-top: 1.5rem;
-}
+.field { margin-bottom: 0.75rem; }
+label { display: inline-block; width: 140px; }
 
-.field {
-  margin-bottom: 0.75rem;
-}
-
-label {
-  display: inline-block;
-  width: 140px;
-}
-
-input[type="number"],
-input[type="text"] {
+input[type="number"], input[type="text"] {
   padding: 0.25rem 0.4rem;
   min-width: 240px;
 }
@@ -36,34 +23,29 @@ button {
   cursor: pointer;
 }
 
-.hint {
-  font-size: 0.9rem;
-  color: #555;
-  margin-top: 0.5rem;
+/* 3D Dice area */
+.dice3d-wrapper {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-#result {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  min-height: 2rem;
-  background: #fafafa;
+#dice-box-3d {
+  width: 100%;
+  height: 260px;
+  background: #222;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.total-highlight {
-  font-weight: bold;
-  color: red;
-  font-size: 1.2rem;
+#dice-box-3d canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-/* Dice faces (similar to your Foundry CSS) */
-.role-roll-chat {
-  margin-top: 0.25rem;
-}
-
-.role-roll-dice-row {
-  margin-bottom: 0.5rem;
-}
+/* Dice faces */
+.role-roll-chat { margin-top: 0.25rem; }
+.role-roll-dice-row { margin-bottom: 0.5rem; }
 
 .role-roll-die {
   display: inline-block;
@@ -78,32 +60,19 @@ button {
   font-weight: bold;
 }
 
-.role-roll-face-point {
-  background: #f3f3f3;
+.role-roll-face-point { background: #f3f3f3; }
+.role-roll-face-reroll { border-style: double; }
+.role-roll-face-plus { border-color: #1a7f37; }
+.role-roll-face-minus { border-color: #cf222e; }
+.role-roll-face-blank { color: #ccc; }
+
+.total-highlight {
+  font-weight: bold;
+  color: red;
+  font-size: 1.2rem;
 }
 
-.role-roll-face-reroll {
-  border-style: double;
-}
-
-.role-roll-face-plus {
-  border-color: #1a7f37;
-}
-
-.role-roll-face-minus {
-  border-color: #cf222e;
-}
-
-.role-roll-face-blank {
-  color: #ccc;
-}
-
-#summary > div {
-  margin-bottom: 0.25rem;
-}
-
-/* existing styles... */
-
+/* Manual */
 .help-icon {
   margin-left: 0.5rem;
   width: 24px;
@@ -116,10 +85,6 @@ button {
   line-height: 22px;
   text-align: center;
   padding: 0;
-}
-
-.help-icon:focus {
-  outline: 2px solid #000;
 }
 
 .manual {
@@ -137,10 +102,7 @@ button {
   margin-bottom: 0.5rem;
 }
 
-.manual-lang {
-  display: flex;
-  gap: 0.25rem;
-}
+.manual-lang { display: flex; gap: 0.25rem; }
 
 .lang-btn {
   border: 1px solid #aaa;
@@ -150,25 +112,15 @@ button {
   cursor: pointer;
   border-radius: 4px;
 }
-
 .lang-btn.active {
   background: #333;
   color: #fff;
   border-color: #333;
 }
 
-.manual-page {
-  margin-top: 0.25rem;
-}
+.hidden { display: none; }
 
-.manual h3 {
-  margin-top: 0;
-}
-
-.hidden {
-  display: none;
-}
-
+/* History */
 .history-title {
   display: flex;
   justify-content: space-between;
@@ -183,10 +135,6 @@ button {
   padding: 0.1rem 0.6rem;
   font-size: 0.85rem;
   cursor: pointer;
-}
-
-.history-toggle:focus {
-  outline: 2px solid #000;
 }
 
 .history {
@@ -204,52 +152,9 @@ button {
   border-bottom: 1px solid #e0e0e0;
 }
 
-.history-item:last-child {
-  border-bottom: none;
-}
-
-.history-header-line {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  margin-bottom: 0.1rem;
-}
-
-.history-time {
-  font-size: 0.8rem;
-  color: #555;
-}
-
-.history-total {
-  font-size: 0.9rem;
-}
-
-.history-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-}
-
-.history-empty {
-  font-size: 0.85rem;
-  color: #777;
-}
-
-/* 3D dice container */
-#dice-3d-container {
-  width: 100%;
-  max-width: 640px;
-  height: 260px;          /* adjust if you want taller/shorter */
-  margin: 1rem auto;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #222;       /* background behind the dice */
-}
-
-/* Make the 3D canvas fill the box */
-#dice-3d-container canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
+.history-item:last-child { border-bottom: none; }
+.history-header-line { display: flex; justify-content: space-between; font-weight: 600; }
+.history-time { font-size: 0.8rem; color: #555; }
+.history-total { font-size: 0.9rem; }
+.history-row { display: flex; justify-content: space-between; font-size: 0.8rem; }
+.history-empty { font-size: 0.85rem; color: #777; }

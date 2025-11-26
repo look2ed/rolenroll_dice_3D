@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Role & Roll Dice Roller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -135,9 +136,9 @@
     </div>
   </div>
 
-  <!-- 3D dice area -->
+  <!-- 3D dice box -->
   <h2>3D Dice</h2>
-  <div id="dice-3d-container"></div>
+  <div id="dice-box-3d" class="dice3d-container"></div>
 
   <h2>Result</h2>
   <div id="result"></div>
@@ -186,45 +187,9 @@
     </div>
   </div>
 
-  <!-- Your main JS logic -->
+  <!-- 3D dice (ES module) -->
+  <script type="module" src="dice3d.js"></script>
+  <!-- R&R logic -->
   <script src="dice.js"></script>
-
-  <!-- 3D dice (Dice-Box via unpkg) -->
-  <script type="module">
-    import DiceBox from "https://unpkg.com/@3d-dice/dice-box@1.1.3/dist/dice-box.es.min.js";
-
-    // Create DiceBox instance with CDN assets and container
-    const diceBox = new DiceBox({
-      container: "#dice-3d-container",
-      assetPath: "assets/",  // required for CDN usage
-      origin: "https://unpkg.com/@3d-dice/dice-box@1.1.3/dist/",
-      theme: "default",
-      scale: 5,              // 2–9; higher = bigger dice
-    });
-
-    // Flag so we don't roll before init
-    window.diceBoxReady = false;
-
-    diceBox.init()
-      .then(() => {
-        console.log("3D DiceBox ready");
-        window.diceBoxReady = true;
-
-        // Expose helper function for dice.js
-        window.roll3dDice = async function(count) {
-          if (!window.diceBoxReady) return;
-          const n = Math.max(1, Number(count) || 1);
-          try {
-            // Roll n d6 visually
-            await diceBox.roll(`${n}d6`);
-          } catch (err) {
-            console.error("3D dice roll failed:", err);
-          }
-        };
-      })
-      .catch(err => {
-        console.error("DiceBox init failed:", err);
-      });
-  </script>
 </body>
 </html>
