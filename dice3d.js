@@ -1,40 +1,49 @@
-// dice3d.js — sync 3D dice for Role&Roll
-import DiceBox from "https://unpkg.com/@3d-dice/[email protected]/dist/dice-box.es.min.js";
+// dice3d.js
+// Simple 3D dice using @3d-dice/dice-box via CDN.
+// This is VISUAL ONLY – it does not change your R&R roll results.
 
-const diceBox = new DiceBox({
-  assetPath: "https://unpkg.com/@3d-dice/[email protected]/assets/",
-  origin: "https://unpkg.com/@3d-dice/[email protected]/dist/",
-  container: "#dice-box-3d",
-  theme: "default",
-  scale: 6
-});
+import DiceBox from "https://unpkg.com/@3d-dice/dice-box@1.1.3/dist/dice-box.es.min.js";
 
+let diceBox = null;
+let diceBoxReady = false;
+
+// Initialise the 3D box once
 async function initDiceBox() {
-  if (!initDiceBox._initialized) {
-    await diceBox.init();
-    initDiceBox._initialized = true;
-  }
+  if (diceBoxReady && diceBox) return diceBox;
+
+  diceBox = new DiceBox({
+    // Use the div in your HTML:
+    //   <div id="dice-box-3d" class="dice-3d-container"></div>
+    container: "#dice-box-3d",
+
+    // These two options are required when loading from the CDN
+    assetPath: "assets/",
+    origin: "https://unpkg.com/@3d-dice/dice-box@1.1.3/dist/",
+
+    // Just some visual tweaks
+    theme: "default",
+    scale: 6,
+    lightIntensity: 1,
+    enableShadows: true
+  });
+
+  await diceBox.init();
+  diceBoxReady = true;
+  return diceBox;
 }
-initDiceBox._initialized = false;
 
-// Roll and return numeric d6 values that correspond to the animation
-window.roll3dDiceSync = async function (count) {
+// Global function used by dice.js
+// Called as: window.roll3dDice(totalDice)
+window.roll3dDice = async function (count) {
   try {
-    await initDiceBox();
+    const box = await initDiceBox();
 
-    const notation = `${count}d6`;
-    const rollGroups = await diceBox.roll(notation);
+    // clamp count a bit so it doesn't explode the scene
+    const qty = Math.max(1, Math.min(30, Number(count) || 1));
 
-    const values = [];
-    for (const group of rollGroups) {
-      if (!group.rolls) continue;
-      for (const die of group.rolls) {
-        if (typeof die.value === "number") values.push(die.value);
-      }
-    }
-    return values;
+    // Roll qty d6 – this is only for visual effect
+    await box.roll(`${qty}d6`);
   } catch (err) {
     console.error("3D dice error:", err);
-    return [];
   }
 };
