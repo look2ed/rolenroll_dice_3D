@@ -1,0 +1,255 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  line-height: 1.4;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin-top: 1.5rem;
+}
+
+.field {
+  margin-bottom: 0.75rem;
+}
+
+label {
+  display: inline-block;
+  width: 140px;
+}
+
+input[type="number"],
+input[type="text"] {
+  padding: 0.25rem 0.4rem;
+  min-width: 240px;
+}
+
+button {
+  margin-top: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+#result {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  min-height: 2rem;
+  background: #fafafa;
+}
+
+.total-highlight {
+  font-weight: bold;
+  color: red;
+  font-size: 1.2rem;
+}
+
+/* Dice faces (similar to your Foundry CSS) */
+.role-roll-chat {
+  margin-top: 0.25rem;
+}
+
+.role-roll-dice-row {
+  margin-bottom: 0.5rem;
+}
+
+.role-roll-die {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  margin: 0 4px 4px 0;
+  text-align: center;
+  line-height: 28px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.role-roll-face-point {
+  background: #f3f3f3;
+}
+
+.role-roll-face-reroll {
+  border-style: double;
+}
+
+.role-roll-face-plus {
+  border-color: #1a7f37;
+}
+
+.role-roll-face-minus {
+  border-color: #cf222e;
+}
+
+.role-roll-face-blank {
+  color: #ccc;
+}
+
+#summary > div {
+  margin-bottom: 0.25rem;
+}
+
+/* existing styles... */
+
+.help-icon {
+  margin-left: 0.5rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #555;
+  background: #f5f5f5;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 22px;
+  text-align: center;
+  padding: 0;
+}
+
+.help-icon:focus {
+  outline: 2px solid #000;
+}
+
+.manual {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  font-size: 0.9rem;
+}
+
+.manual-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.manual-lang {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.lang-btn {
+  border: 1px solid #aaa;
+  background: #f0f0f0;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.lang-btn.active {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+.manual-page {
+  margin-top: 0.25rem;
+}
+
+.manual h3 {
+  margin-top: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.history-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.history-toggle {
+  border: 1px solid #555;
+  border-radius: 999px;
+  background: #f5f5f5;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.history-toggle:focus {
+  outline: 2px solid #000;
+}
+
+.history {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  font-size: 0.9rem;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.history-item {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-header-line {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
+.history-time {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.history-total {
+  font-size: 0.9rem;
+}
+
+.history-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.history-empty {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* 3D dice container */
+#dice-3d-container {
+  width: 100%;
+  max-width: 640px;
+  height: 260px;          /* adjust if you want taller/shorter */
+  margin: 1rem auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #222;       /* background behind the dice */
+}
+
+/* Make the 3D canvas fill the box */
+#dice-3d-container canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
